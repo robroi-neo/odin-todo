@@ -1,0 +1,211 @@
+:root {
+    --color-primary: #5e6ad2;
+    --color-primary-hover: #828fff;
+    --color-primary-focus: #5e69d1;
+    --color-on-primary: #ffffff;
+
+    --color-ink: #f7f8f8;
+    --color-ink-muted: #d0d6e0;
+    --color-ink-subtle: #8a8f98;
+    --color-ink-tertiary: #62666d;
+
+    --color-canvas: #010102;
+    --color-surface-1: #0f1011;
+    --color-surface-2: #141516;
+    --color-surface-3: #18191a;
+
+    --color-hairline: #23252a;
+    --color-hairline-strong: #34343a;
+
+    --font-family: "Inter", -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-pill: 9999px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-family);
+}
+
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+
+.sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    background: var(--color-surface-1);
+    border-right: 1px solid var(--color-hairline);
+    padding: 24px 16px;
+}
+
+.sidebar__heading {
+    margin: 0 0 16px 8px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    color: var(--color-ink-subtle);
+}
+
+.sidebar__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.sidebar__item {
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-ink-muted);
+    cursor: pointer;
+    border-left: 2px solid transparent;
+}
+
+.sidebar__item:hover {
+    background: var(--color-surface-2);
+    color: var(--color-ink);
+}
+
+.sidebar__item--active {
+    background: var(--color-surface-2);
+    color: var(--color-ink);
+    border-left: 2px solid var(--color-primary);
+}
+
+/* Todo list */
+
+.todo-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    max-width: 720px;
+}
+
+.todo-list__heading {
+    margin: 0 0 24px;
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: -0.6px;
+    color: var(--color-ink);
+}
+
+.todo-list__items {
+    list-style: none;
+    margin: 0 0 24px;
+    padding: 0;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.todo-list__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 12px;
+    margin-bottom: 4px;
+    background: var(--color-surface-1);
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    color: var(--color-ink);
+}
+
+.todo-list__empty {
+    padding: 12px 4px;
+    color: var(--color-ink-tertiary);
+    font-size: 14px;
+}
+
+.todo-list__priority {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+    background: var(--color-surface-3);
+    color: var(--color-ink-muted);
+}
+
+.todo-list__priority--high {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+}
+
+.todo-list__priority--medium {
+    background: var(--color-surface-3);
+    color: var(--color-ink);
+    border: 1px solid var(--color-hairline-strong);
+}
+
+.todo-list__priority--low {
+    background: var(--color-surface-2);
+    color: var(--color-ink-subtle);
+}
+
+.todo-list__form {
+    display: flex;
+    gap: 8px;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-hairline);
+}
+
+.todo-list__input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-1);
+    color: var(--color-ink);
+    font-family: var(--font-family);
+    font-size: 14px;
+}
+
+.todo-list__input::placeholder {
+    color: var(--color-ink-tertiary);
+}
+
+.todo-list__input:focus {
+    outline: 2px solid rgba(94, 105, 209, 0.5);
+    outline-offset: 0;
+    border-color: var(--color-primary-focus);
+}
+
+.todo-list__submit {
+    padding: 8px 14px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.todo-list__submit:hover {
+    background: var(--color-primary-hover);
+}
+
+.todo-list__submit:disabled,
+.todo-list__input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
