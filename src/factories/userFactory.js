@@ -1,6 +1,5 @@
 import User from "../models/User.js";
-import projectFactory from "./projectFactory.js";
-import taskFactory from "./taskFactory.js";
+import defaultProjectsFactory from "./defaultProjectsFactory.js";
 
 class userFactory {
     static #userId = 1;
@@ -9,15 +8,19 @@ class userFactory {
         if (!username) throw new Error("User Must have username");
         const user = new User(this.#assignId(), username);
 
-        const defaultProject = projectFactory.create("My Day");
-        defaultProject.addTask(taskFactory.create("Welcome to your todo list!"));
-        user.addProject(defaultProject);
+        this.#addDefaultProjects(user);
 
         return user;
     }
 
     static #assignId(){
         return this.#userId++;
+    }
+
+    static #addDefaultProjects(user){
+        for (const project of defaultProjectsFactory.create()) {
+            user.addProject(project);
+        }
     }
 }
 
