@@ -5,8 +5,6 @@ class User {
         this.#id = id;
         this.username = username;
         this.projects = [];   
-
-        
     }
 
     addProject(project){
@@ -17,6 +15,11 @@ class User {
         this.projects = this.projects.filter(project => project.id != id);
     }
 
+    getAllProjects(){
+        return this.projects;
+    }
+
+    // debug
     printUserTasks(user) {
         console.log(`Tasks for ${this.username}:`);
         for (const project of this.projects) {
