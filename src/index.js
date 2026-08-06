@@ -18,3 +18,9 @@ project2.addTask(taskFactory.create("task 2"));
 project2.addTask(taskFactory.create("task 3"));
 
 user.printUserTasks();
+
+// remove task from project2
+
+user.removeProjects(project2.id);
+user.printUserTasks();
+

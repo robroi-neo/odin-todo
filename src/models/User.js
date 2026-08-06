@@ -5,10 +5,16 @@ class User {
         this.#id = id;
         this.username = username;
         this.projects = [];   
+
+        
     }
 
     addProject(project){
         this.projects.push(project)
+    }
+
+    removeProjects(id){
+        this.projects = this.projects.filter(project => project.id != id);
     }
 
     printUserTasks(user) {
@@ -18,7 +24,7 @@ class User {
                 console.log(`- [${project.name}] ${task.title}`);
             }
         }
-}
+    }
 
 }
 

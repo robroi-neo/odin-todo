@@ -9,6 +9,10 @@ class Project {
     addTask(task){
         this.tasks.push(task);
     }
+
+    removeTask(id){
+        this.tasks = this.tasks.filter(task => task.id != task);
+    }
 }
 
 export default Project;
