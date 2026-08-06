@@ -1,0 +1,15 @@
+class Task {
+    constructor(id, title, description, dueDate, priority){
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.priority = priority;
+    }
+
+    editTitle(newTitle){
+        this.title = newTitle
+    }
+}
+
+export default Task;
