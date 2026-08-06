@@ -1,7 +1,9 @@
 class TodoList {
-    constructor({ project, onAddTask }) {
+    constructor({ project, onAddTask, onToggleTask, onDeleteTask }) {
         this.project = project;
         this.onAddTask = onAddTask;
+        this.onToggleTask = onToggleTask;
+        this.onDeleteTask = onDeleteTask;
     }
 
     render() {
@@ -37,23 +39,55 @@ class TodoList {
         }
 
         for (const task of tasks) {
-            const li = document.createElement("li");
-            li.className = "todo-list__item";
-
-            const title = document.createElement("span");
-            title.className = "todo-list__title";
-            title.textContent = task.title;
-
-            const priority = document.createElement("span");
-            priority.className = `todo-list__priority todo-list__priority--${task.priority}`;
-            priority.textContent = task.priority;
-
-            li.appendChild(title);
-            li.appendChild(priority);
-            ul.appendChild(li);
+            ul.appendChild(this.#renderItem(task));
         }
 
         return ul;
+    }
+
+    #renderItem(task) {
+        const li = document.createElement("li");
+        li.className = "todo-list__item";
+        if (task.completed) li.classList.add("todo-list__item--completed");
+
+        const left = document.createElement("div");
+        left.className = "todo-list__item-left";
+
+        const checkbox = document.createElement("button");
+        checkbox.type = "button";
+        checkbox.className = "todo-list__checkbox";
+        if (task.completed) checkbox.classList.add("todo-list__checkbox--checked");
+        checkbox.setAttribute("aria-label", task.completed ? "Mark as not completed" : "Mark as completed");
+        checkbox.addEventListener("click", () => this.onToggleTask(task.id));
+
+        const title = document.createElement("span");
+        title.className = "todo-list__title";
+        title.textContent = task.title;
+
+        left.appendChild(checkbox);
+        left.appendChild(title);
+
+        const right = document.createElement("div");
+        right.className = "todo-list__item-right";
+
+        const priority = document.createElement("span");
+        priority.className = `todo-list__priority todo-list__priority--${task.priority}`;
+        priority.textContent = task.priority;
+        right.appendChild(priority);
+
+        if (task.completed) {
+            const deleteButton = document.createElement("button");
+            deleteButton.type = "button";
+            deleteButton.className = "todo-list__delete";
+            deleteButton.textContent = "×";
+            deleteButton.setAttribute("aria-label", "Delete task");
+            deleteButton.addEventListener("click", () => this.onDeleteTask(task.id));
+            right.appendChild(deleteButton);
+        }
+
+        li.appendChild(left);
+        li.appendChild(right);
+        return li;
     }
 
     #renderForm() {

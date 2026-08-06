@@ -1,18 +1,16 @@
 class Sidebar {
-    constructor({ projects, selectedProjectId, onSelectProject }) {
+    constructor({ projects, selectedProjectId, onSelectProject, onAddProject }) {
         this.projects = projects;
         this.selectedProjectId = selectedProjectId;
         this.onSelectProject = onSelectProject;
+        this.onAddProject = onAddProject;
     }
 
     render() {
         const aside = document.createElement("aside");
         aside.className = "sidebar";
 
-        const heading = document.createElement("h2");
-        heading.className = "sidebar__heading";
-        heading.textContent = "My Projects";
-        aside.appendChild(heading);
+        aside.appendChild(this.#renderHeader());
 
         const list = document.createElement("ul");
         list.className = "sidebar__list";
@@ -23,6 +21,26 @@ class Sidebar {
 
         aside.appendChild(list);
         return aside;
+    }
+
+    #renderHeader() {
+        const header = document.createElement("div");
+        header.className = "sidebar__header";
+
+        const heading = document.createElement("h2");
+        heading.className = "sidebar__heading";
+        heading.textContent = "My Lists";
+
+        const addButton = document.createElement("button");
+        addButton.type = "button";
+        addButton.className = "sidebar__add-btn";
+        addButton.textContent = "+";
+        addButton.setAttribute("aria-label", "Add project");
+        addButton.addEventListener("click", () => this.onAddProject());
+
+        header.appendChild(heading);
+        header.appendChild(addButton);
+        return header;
     }
 
     #renderItem(project) {

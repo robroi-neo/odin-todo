@@ -5,10 +5,15 @@ class Task {
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
+        this.completed = false;
     }
 
     editTitle(newTitle){
         this.title = newTitle
+    }
+
+    toggleCompleted(){
+        this.completed = !this.completed;
     }
 }
 

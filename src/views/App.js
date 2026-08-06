@@ -1,6 +1,7 @@
 import Sidebar from "./Sidebar.js";
 import TodoList from "./TodoList.js";
 import taskFactory from "../factories/taskFactory.js";
+import projectFactory from "../factories/projectFactory.js";
 
 class App {
     constructor(user) {
@@ -19,10 +20,36 @@ class App {
         this.render();
     }
 
+    addProject() {
+        const name = window.prompt("New project name")?.trim();
+        if (!name) return;
+
+        const project = projectFactory.create(name);
+        this.user.addProject(project);
+        this.selectedProjectId = project.id;
+        this.render();
+    }
+
     addTask(title) {
         const project = this.#getSelectedProject();
         if (!project) return;
         project.addTask(taskFactory.create(title));
+        this.render();
+    }
+
+    toggleTask(taskId) {
+        const project = this.#getSelectedProject();
+        if (!project) return;
+        const task = project.getAllTasks().find(task => task.id === taskId);
+        if (!task) return;
+        task.toggleCompleted();
+        this.render();
+    }
+
+    deleteTask(taskId) {
+        const project = this.#getSelectedProject();
+        if (!project) return;
+        project.removeTask(taskId);
         this.render();
     }
 
@@ -40,11 +67,14 @@ class App {
             projects: this.user.getAllProjects(),
             selectedProjectId: this.selectedProjectId,
             onSelectProject: (id) => this.selectProject(id),
+            onAddProject: () => this.addProject(),
         });
 
         const todoList = new TodoList({
             project: this.#getSelectedProject(),
             onAddTask: (title) => this.addTask(title),
+            onToggleTask: (id) => this.toggleTask(id),
+            onDeleteTask: (id) => this.deleteTask(id),
         });
 
         layout.appendChild(sidebar.render());
