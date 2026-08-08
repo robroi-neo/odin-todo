@@ -34,6 +34,12 @@ class Sidebar {
         const topBar = document.createElement("div");
         topBar.className = "sidebar__top";
 
+ 
+
+        const user = document.createElement("div");
+        user.className = "sidebar__user";
+        user.textContent = this.username;
+
         const menuToggle = document.createElement("button");
         menuToggle.type = "button";
         menuToggle.className = "menu-toggle";
@@ -41,12 +47,8 @@ class Sidebar {
         menuToggle.setAttribute("aria-label", "Toggle sidebar");
         menuToggle.addEventListener("click", () => this.onToggleCollapsed());
 
-        const user = document.createElement("div");
-        user.className = "sidebar__user";
-        user.textContent = this.username;
-
-        topBar.appendChild(menuToggle);
         topBar.appendChild(user);
+        topBar.appendChild(menuToggle);
         return topBar;
     }
 

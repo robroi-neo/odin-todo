@@ -55,7 +55,7 @@ body {
 .sidebar {
   width: 15rem;
   flex-shrink: 0;
-  background: var(--color-surface-1);
+  background: #161616;
   border-right: 1px solid var(--color-hairline);
   padding: 1.5rem 1rem;
 }
@@ -73,6 +73,7 @@ body {
 .sidebar__top {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.5rem;
   margin-bottom: 1rem;
   padding: 0 0.5rem;
@@ -110,7 +111,7 @@ body {
 .sidebar__heading {
   margin: 0;
   font-size: var(--font-size-lg);
-  font-weight: 600;
+  font-weight: bold;
   letter-spacing: -0.2px;
   color: var(--color-ink);
 }
@@ -156,18 +157,17 @@ body {
 
 .sidebar__item:hover {
   background: var(--color-surface-2);
-  color: var(--color-ink);
 }
 
 .sidebar__item--active {
   background: var(--color-surface-2);
-  color: var(--color-ink);
-  border-left: 2px solid var(--color-primary);
+  color: var(--color-primary);
 }
 
 .sidebar__user {
-  font-size: var(--font-size-sm);
-  color: var(--color-ink-subtle);
+  font-weight: bold;
+  font-size: var(--font-size-lg);
+  color: var(--color-ink);
 }
 
 /* Todo list */
@@ -179,7 +179,7 @@ body {
   margin: 2rem 1.5rem;
   padding: 1rem;
   max-width: 36rem;
-  background-color: #0f0f0f;
+  background-color: #161616;
   border-radius: var(--radius-lg);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
@@ -187,8 +187,8 @@ body {
 .todo-list__heading {
   margin: 0 0 1.5rem;
   font-family: var(--font-family);
-  font-weight: 600;
-  font-size: var(--font-size-2xl);
+  font-weight: bold;
+  font-size: var(--font-size-xl);
   letter-spacing: -0.6px;
   color: var(--color-ink);
 }
@@ -207,8 +207,6 @@ body {
   justify-content: space-between;
   padding: 0.75rem;
   margin-bottom: 0.25rem;
-  background: var(--color-surface-1);
-  border: 1px solid var(--color-hairline);
   border-radius: var(--radius-md);
   font-size: var(--font-size-sm);
   color: var(--color-ink);
@@ -243,7 +241,7 @@ body {
   height: 1rem;
   flex-shrink: 0;
   padding: 0;
-  border: 1px solid var(--color-hairline-strong);
+  border: 1px solid var(--color-ink-subtle);
   border-radius: var(--radius-pill);
   background: transparent;
   cursor: pointer;
@@ -319,13 +317,12 @@ body {
   display: flex;
   gap: 0.5rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--color-hairline);
 }
 
 .todo-list__input {
   flex: 1;
   padding: 0.5rem 0.75rem;
-  border: 1px solid var(--color-hairline);
+  border: 1px solid var(--color-ink-subtle);
   border-radius: var(--radius-md);
   background: var(--color-surface-1);
   color: var(--color-ink);
