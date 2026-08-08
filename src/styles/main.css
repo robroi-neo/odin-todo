@@ -181,6 +181,7 @@ body {
   max-width: 36rem;
   background-color: #0f0f0f;
   border-radius: var(--radius-lg);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
 .todo-list__heading {
