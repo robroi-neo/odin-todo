@@ -8,6 +8,7 @@ class App {
         this.user = user;
         const firstProject = user.getAllProjects()[0];
         this.selectedProjectId = firstProject ? firstProject.id : null;
+        this.sidebarCollapsed = false;
     }
 
     mount(root) {
@@ -17,6 +18,11 @@ class App {
 
     selectProject(id) {
         this.selectedProjectId = id;
+        this.render();
+    }
+
+    toggleSidebar() {
+        this.sidebarCollapsed = !this.sidebarCollapsed;
         this.render();
     }
 
@@ -67,8 +73,10 @@ class App {
             username: this.user.getUser(),
             projects: this.user.getAllProjects(),
             selectedProjectId: this.selectedProjectId,
+            collapsed: this.sidebarCollapsed,
             onSelectProject: (id) => this.selectProject(id),
             onAddProject: () => this.addProject(),
+            onToggleCollapsed: () => this.toggleSidebar(),
         });
 
         const todoList = new TodoList({

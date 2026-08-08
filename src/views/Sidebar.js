@@ -1,17 +1,22 @@
 class Sidebar {
-    constructor({ username, projects, selectedProjectId, onSelectProject, onAddProject }) {
+    constructor({ username, projects, selectedProjectId, collapsed, onSelectProject, onAddProject, onToggleCollapsed }) {
         this.username = username;
         this.projects = projects;
         this.selectedProjectId = selectedProjectId;
+        this.collapsed = collapsed;
         this.onSelectProject = onSelectProject;
         this.onAddProject = onAddProject;
+        this.onToggleCollapsed = onToggleCollapsed;
     }
 
     render() {
         const aside = document.createElement("aside");
         aside.className = "sidebar";
+        if (this.collapsed) {
+            aside.classList.add("sidebar--collapsed");
+        }
 
-        aside.appendChild(this.#renderUserName());
+        aside.appendChild(this.#renderTopBar());
         aside.appendChild(this.#renderHeader());
 
         const list = document.createElement("ul");
@@ -25,11 +30,24 @@ class Sidebar {
         return aside;
     }
 
-    #renderUserName() {
+    #renderTopBar() {
+        const topBar = document.createElement("div");
+        topBar.className = "sidebar__top";
+
+        const menuToggle = document.createElement("button");
+        menuToggle.type = "button";
+        menuToggle.className = "menu-toggle";
+        menuToggle.textContent = "☰";
+        menuToggle.setAttribute("aria-label", "Toggle sidebar");
+        menuToggle.addEventListener("click", () => this.onToggleCollapsed());
+
         const user = document.createElement("div");
         user.className = "sidebar__user";
         user.textContent = this.username;
-        return user;
+
+        topBar.appendChild(menuToggle);
+        topBar.appendChild(user);
+        return topBar;
     }
 
     #renderHeader() {
