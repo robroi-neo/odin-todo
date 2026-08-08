@@ -21,6 +21,14 @@
   --font-family:
     "Inter", -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
 
+  --font-size-lg: 1.2rem;
+  --font-size-step: calc(var(--font-size-lg) / 9);
+  --font-size-xs: calc(var(--font-size-step) * 6);
+  --font-size-sm: calc(var(--font-size-step) * 7);
+  --font-size-md: calc(var(--font-size-step) * 8);
+  --font-size-xl: calc(var(--font-size-step) * 11);
+  --font-size-2xl: calc(var(--font-size-step) * 14);
+
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-pill: 9999px;
@@ -62,7 +70,7 @@ body {
 
 .sidebar__heading {
   margin: 0;
-  font-size: 1.125rem;
+  font-size: var(--font-size-lg);
   font-weight: 600;
   letter-spacing: -0.2px;
   color: var(--color-ink);
@@ -78,7 +86,7 @@ body {
   border-radius: var(--radius-md);
   background: transparent;
   color: var(--color-ink-subtle);
-  font-size: 1rem;
+  font-size: var(--font-size-md);
   line-height: 1;
   cursor: pointer;
 }
@@ -100,7 +108,7 @@ body {
 .sidebar__item {
   padding: 0.5rem 0.75rem;
   border-radius: var(--radius-md);
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
   font-weight: 400;
   color: var(--color-ink-muted);
   cursor: pointer;
@@ -135,7 +143,7 @@ body {
   margin: 0 0 1.5rem;
   font-family: var(--font-family);
   font-weight: 600;
-  font-size: 1.75rem;
+  font-size: var(--font-size-2xl);
   letter-spacing: -0.6px;
   color: var(--color-ink);
 }
@@ -157,7 +165,7 @@ body {
   background: var(--color-surface-1);
   border: 1px solid var(--color-hairline);
   border-radius: var(--radius-md);
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
   color: var(--color-ink);
 }
 
@@ -210,7 +218,7 @@ body {
   border-radius: var(--radius-md);
   background: transparent;
   color: var(--color-ink-subtle);
-  font-size: 1rem;
+  font-size: var(--font-size-md);
   line-height: 1;
   cursor: pointer;
 }
@@ -223,11 +231,11 @@ body {
 .todo-list__empty {
   padding: 0.75rem 0.25rem;
   color: var(--color-ink-tertiary);
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
 }
 
 .todo-list__priority {
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
   font-weight: 500;
   letter-spacing: 0.3px;
   padding: 0.125rem 0.5rem;
@@ -267,7 +275,7 @@ body {
   background: var(--color-surface-1);
   color: var(--color-ink);
   font-family: var(--font-family);
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
 }
 
 .todo-list__input::placeholder {
@@ -287,7 +295,7 @@ body {
   background: var(--color-primary);
   color: var(--color-on-primary);
   font-family: var(--font-family);
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
   font-weight: 500;
   cursor: pointer;
 }
@@ -342,7 +350,7 @@ body {
 
 @media (max-width: 480px) {
   .todo-list__heading {
-    font-size: 1.375rem;
+    font-size: var(--font-size-xl);
   }
 
   .todo-list__form {
