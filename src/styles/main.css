@@ -211,6 +211,16 @@ body {
   border-radius: var(--radius-md);
   font-size: var(--font-size-sm);
   color: var(--color-ink);
+  cursor: pointer;
+}
+
+.todo-list__item:hover:not(.todo-list__item--active) {
+  background: #2e2e2e;
+}
+
+.todo-list__item:active,
+.todo-list__item--active {
+  background: #393939;
 }
 
 .todo-list__item-left {

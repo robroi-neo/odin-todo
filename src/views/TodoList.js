@@ -50,6 +50,15 @@ class TodoList {
         li.className = "todo-list__item";
         if (task.completed) li.classList.add("todo-list__item--completed");
 
+        li.addEventListener("click", (event) => {
+            if (event.target.closest("button")) return;
+            const wasActive = li.classList.contains("todo-list__item--active");
+            li.parentElement
+                .querySelectorAll(".todo-list__item--active")
+                .forEach((el) => el.classList.remove("todo-list__item--active"));
+            if (!wasActive) li.classList.add("todo-list__item--active");
+        });
+
         const left = document.createElement("div");
         left.className = "todo-list__item-left";
 
@@ -69,11 +78,6 @@ class TodoList {
 
         const right = document.createElement("div");
         right.className = "todo-list__item-right";
-
-        const priority = document.createElement("span");
-        priority.className = `todo-list__priority todo-list__priority--${task.priority}`;
-        priority.textContent = task.priority;
-        right.appendChild(priority);
 
         if (task.completed) {
             const deleteButton = document.createElement("button");
@@ -97,7 +101,7 @@ class TodoList {
         const input = document.createElement("input");
         input.type = "text";
         input.className = "todo-list__input";
-        input.placeholder = "Add a new to-do...";
+        input.placeholder = "+ Add Task";
         input.disabled = !this.project;
 
         const button = document.createElement("button");
