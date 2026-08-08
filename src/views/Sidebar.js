@@ -1,5 +1,6 @@
 class Sidebar {
-    constructor({ projects, selectedProjectId, onSelectProject, onAddProject }) {
+    constructor({ username, projects, selectedProjectId, onSelectProject, onAddProject }) {
+        this.username = username;
         this.projects = projects;
         this.selectedProjectId = selectedProjectId;
         this.onSelectProject = onSelectProject;
@@ -10,6 +11,7 @@ class Sidebar {
         const aside = document.createElement("aside");
         aside.className = "sidebar";
 
+        aside.appendChild(this.#renderUserName());
         aside.appendChild(this.#renderHeader());
 
         const list = document.createElement("ul");
@@ -21,6 +23,13 @@ class Sidebar {
 
         aside.appendChild(list);
         return aside;
+    }
+
+    #renderUserName() {
+        const user = document.createElement("div");
+        user.className = "sidebar__user";
+        user.textContent = this.username;
+        return user;
     }
 
     #renderHeader() {

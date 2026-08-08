@@ -64,6 +64,7 @@ class App {
         layout.className = "app-layout";
 
         const sidebar = new Sidebar({
+            username: this.user.getUser(),
             projects: this.user.getAllProjects(),
             selectedProjectId: this.selectedProjectId,
             onSelectProject: (id) => this.selectProject(id),

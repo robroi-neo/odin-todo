@@ -19,6 +19,10 @@ class User {
         return this.projects;
     }
 
+    getUser() {
+        return this.username;
+    }
+
     // debug
     printUserTasks(user) {
         console.log(`Tasks for ${this.username}:`);

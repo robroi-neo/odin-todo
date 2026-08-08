@@ -126,6 +126,14 @@ body {
   border-left: 2px solid var(--color-primary);
 }
 
+.sidebar__user {
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--color-hairline);
+  font-size: var(--font-size-sm);
+  color: var(--color-ink-subtle);
+}
+
 /* Todo list */
 
 .todo-list {
